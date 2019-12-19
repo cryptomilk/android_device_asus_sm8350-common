@@ -438,11 +438,14 @@ on post-fs-data
 
     #Create dir for TUI
     mkdir /data/vendor/tui 0700 system drmrpc
-    
+
     #ASUS_BSP +++ ClayWang "Proximity/Light sensor"
     write /sys/class/sensors/psensor/load_cal 1
     write /sys/class/sensors/psensor_2nd/load_cal 1
     #ASUS_BSP --- ClayWamg "Proximity/Light sensor"
+
+    # Trigger WLAN driver load
+    write /sys/kernel/boot_wlan/boot_wlan 1
 
 #SLM
 service sls_notify /system/bin/sls_notify
